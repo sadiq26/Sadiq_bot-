@@ -1,0 +1,10 @@
+<launch>
+  <param name="robot_description" command="$(find xacro)/xacro $(find sadiq_bot_description)/urdf/sadiq_bot.xacro"/>
+  <arg name="rvizconfig" default="$(find sadiq_bot_description)/launch/urdf2.rviz" />
+  
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" />
+     <param name="use_gui" value="True"/>
+</launch>
+ 

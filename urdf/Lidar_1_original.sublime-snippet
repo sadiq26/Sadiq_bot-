@@ -1,0 +1,26 @@
+<link name="Lidar_1">
+  <inertial>
+    <origin xyz="0.014731781895290997 0.01621834773832238 0.0199552332954316" rpy="0 0 0"/>
+    <mass value="1.1515616542314233"/>
+    <inertia ixx="0.000489" iyy="0.000861" izz="0.000987" ixy="-0.0" iyz="0.0" ixz="-0.000148"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.010052 0.034437 -0.088992" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/Lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.010052 0.034437 -0.088992" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/Lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="lidar_J" type="fixed">
+  <origin xyz="0.09 0.065 -0.0025" rpy="0 0 0"/>
+  <parent link="top_1"/>
+  <child link="Lidar_1"/>
+</joint>

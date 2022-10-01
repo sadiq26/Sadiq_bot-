@@ -1,0 +1,108 @@
+<?xml version="1.0" ?>
+<robot name="sadiq_bot" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<xacro:property name="body_color" value="Gazebo/Silver" />
+<xacro:property name="wheel_rim_color" value="Gazebo/Blue" />
+<xacro:property name="tire_color" value="Gazebo/FlatBlack" />
+<xacro:property name="arduino_color" value="Gazebo/Blue" />
+<xacro:property name="raspberry_color" value="Gazebo/Green" />
+<xacro:property name="pin_color" value="Gazebo/ZincYellow" />
+<xacro:property name="camera_color" value="Gazebo/Turquoise" />
+<xacro:property name="lidar_color" value="Gazebo/SkyBlue" />
+<xacro:property name="motor_color" value="Gazebo/Yellow" />
+<xacro:property name="motor_accents_color" value="Gazebo/Silver" />
+<xacro:property name="spacer_color" value="Gazebo/DarkGrey" />
+<xacro:property name="battery_color" value="Gazebo/Red" />
+<xacro:property name="top_color" value="Gazebo/White" />
+<xacro:property name="L298_color" value="Gazebo/RedBright" />
+
+
+<gazebo reference="base_link">
+  <material>${body_color}</material>
+</gazebo>
+
+<gazebo reference="spacerFR_1">
+  <material>${spacer_color}</material>
+</gazebo>
+
+<gazebo reference="spacerFL_1">
+  <material>${spacer_color}</material>
+</gazebo>
+
+<gazebo reference="spacerBL_1">
+  <material>${spacer_color}</material>
+</gazebo>
+
+<gazebo reference="spacerBR_1">
+  <material>${spacer_color}</material>
+</gazebo>
+
+<gazebo reference="top_1">
+  <material>${top_color}</material>
+</gazebo>
+
+<gazebo reference="motorFR_1">
+  <material>${motor_color}</material>
+</gazebo>
+
+<gazebo reference="motor_v1_1">
+  <material>${motor_accents_color}</material>
+</gazebo>
+
+<gazebo reference="motorBR_1">
+  <material>${motor_color}</material>
+</gazebo>
+
+<gazebo reference="motorBL_1">
+  <material>${motor_color}</material>
+</gazebo>
+
+<gazebo reference="FWR_1">
+  <material>${motor_color}</material>
+</gazebo>
+
+<gazebo reference="FWL_1">
+  <material>${motor_color}</material>
+</gazebo>
+
+<gazebo reference="BWR_1">
+  <material>${motor_color}</material>
+</gazebo>
+
+<gazebo reference="BWL_1">
+  <material>${motor_color}</material>
+</gazebo>
+
+<gazebo reference="L298N__1">
+  <material>${L298_color}</material>
+</gazebo>
+
+<gazebo reference="battery_1">
+  <material>${battery_color}</material>
+</gazebo>
+
+<gazebo reference="mi_powerbank_2_v1_1">
+  <material>${tire_color}</material>
+</gazebo>
+
+<gazebo reference="Lidar_1">
+  <material>${lidar_color}</material>
+</gazebo>
+
+<gazebo reference="Raspberry_Pi_1">
+  <material>${raspberry_color}</material>
+</gazebo>
+
+<gazebo reference="Arduino_Uno_v1_1">
+  <material>${arduino_color}</material>
+</gazebo>
+
+<gazebo reference="cam_holder_1">
+  <material>${camera_color}</material>
+</gazebo>
+
+<gazebo reference="pi_cam_1">
+  <material>${camera_color}</material>
+</gazebo>
+
+</robot>

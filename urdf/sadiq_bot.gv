@@ -1,0 +1,71 @@
+digraph G {
+node [shape=box];
+"dummy" [label="dummy"];
+"base_link" [label="base_link"];
+"mi_powerbank_2_v1_1" [label="mi_powerbank_2_v1_1"];
+"battery_1" [label="battery_1"];
+"cam_holder_1" [label="cam_holder_1"];
+"pi_cam_1" [label="pi_cam_1"];
+"L298N__1" [label="L298N__1"];
+"motorBL_1" [label="motorBL_1"];
+"BWL_1" [label="BWL_1"];
+"motorBR_1" [label="motorBR_1"];
+"BWR_1" [label="BWR_1"];
+"motor_v1_1" [label="motor_v1_1"];
+"FWL_1" [label="FWL_1"];
+"motorFR_1" [label="motorFR_1"];
+"FWR_1" [label="FWR_1"];
+"spacerBL_1" [label="spacerBL_1"];
+"spacerBR_1" [label="spacerBR_1"];
+"top_1" [label="top_1"];
+"Arduino_Uno_v1_1" [label="Arduino_Uno_v1_1"];
+"hokuyo_link" [label="hokuyo_link"];
+"Raspberry_Pi_1" [label="Raspberry_Pi_1"];
+"spacerFL_1" [label="spacerFL_1"];
+"spacerFR_1" [label="spacerFR_1"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"dummy" -> "dummy_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"dummy_joint" -> "base_link"
+"base_link" -> "Powerbn_J" [label="xyz: -0.010052 -0.034437 0.051492 \nrpy: 0 -0 0"]
+"Powerbn_J" -> "mi_powerbank_2_v1_1"
+"base_link" -> "battery_J" [label="xyz: -0.010052 -0.034437 0.047492 \nrpy: 0 -0 0"]
+"battery_J" -> "battery_1"
+"base_link" -> "cam_holder_J" [label="xyz: -0.005026 -0.017219 0.027746 \nrpy: 0 -0 0"]
+"cam_holder_J" -> "cam_holder_1"
+"cam_holder_1" -> "picam_J" [label="xyz: 0.121122 0 0.030025 \nrpy: 0 -0 0"]
+"picam_J" -> "pi_cam_1"
+"base_link" -> "l289N_J" [label="xyz: -0.005026 -0.017219 0.023746 \nrpy: 0 -0 0"]
+"l289N_J" -> "L298N__1"
+"base_link" -> "motorBL_J" [label="xyz: -0.010052 -0.034437 0.047492 \nrpy: 0 -0 0"]
+"motorBL_J" -> "motorBL_1"
+"motorBL_1" -> "BWL_J" [label="xyz: -0.035054 0.080618 -0.034896 \nrpy: 0 -0 0"]
+"BWL_J" -> "BWL_1"
+"base_link" -> "motorBR_J" [label="xyz: -0.010052 -0.034437 0.047492 \nrpy: 0 -0 0"]
+"motorBR_J" -> "motorBR_1"
+"motorBR_1" -> "BWR_J" [label="xyz: -0.035054 -0.046182 -0.034896 \nrpy: 0 -0 0"]
+"BWR_J" -> "BWR_1"
+"base_link" -> "motorFL_J" [label="xyz: -0.010052 -0.034437 0.047492 \nrpy: 0 -0 0"]
+"motorFL_J" -> "motor_v1_1"
+"motor_v1_1" -> "FWL_J" [label="xyz: 0.045106 0.080618 -0.034896 \nrpy: 0 -0 0"]
+"FWL_J" -> "FWL_1"
+"base_link" -> "motorFR_J" [label="xyz: -0.010052 -0.034437 0.047492 \nrpy: 0 -0 0"]
+"motorFR_J" -> "motorFR_1"
+"motorFR_1" -> "FWR_J" [label="xyz: 0.045106 -0.046182 -0.034896 \nrpy: 0 -0 0"]
+"FWR_J" -> "FWR_1"
+"base_link" -> "spacerBLJ" [label="xyz: -0.010052 -0.034437 0.051492 \nrpy: 0 -0 0"]
+"spacerBLJ" -> "spacerBL_1"
+"base_link" -> "spacerBRJ" [label="xyz: -0.010052 -0.034437 0.051492 \nrpy: 0 -0 0"]
+"spacerBRJ" -> "spacerBR_1"
+"spacerBR_1" -> "top_J" [label="xyz: -0.09 -0.065 0.04 \nrpy: 0 -0 0"]
+"top_J" -> "top_1"
+"top_1" -> "arduino_J" [label="xyz: 0.09 0.065 -0.0025 \nrpy: 0 -0 0"]
+"arduino_J" -> "Arduino_Uno_v1_1"
+"top_1" -> "hokuyo_joint" [label="xyz: 0.15 0.08 0.039 \nrpy: 0 -0 0"]
+"hokuyo_joint" -> "hokuyo_link"
+"top_1" -> "raspberry_pi_J" [label="xyz: 0.09 0.065 -0.0025 \nrpy: 0 -0 0"]
+"raspberry_pi_J" -> "Raspberry_Pi_1"
+"base_link" -> "spacerFLJ" [label="xyz: -0.010052 -0.034437 0.051492 \nrpy: 0 -0 0"]
+"spacerFLJ" -> "spacerFL_1"
+"base_link" -> "spacerFRJ" [label="xyz: -0.010052 -0.034437 0.051492 \nrpy: 0 -0 0"]
+"spacerFRJ" -> "spacerFR_1"
+}

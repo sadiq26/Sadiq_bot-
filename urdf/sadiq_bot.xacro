@@ -1,0 +1,647 @@
+<?xml version="1.0" ?>
+<robot name="sadiq_bot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<xacro:include filename="$(find sadiq_bot_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find sadiq_bot_description)/urdf/sadiq_bot.trans" />
+<xacro:include filename="$(find sadiq_bot_description)/urdf/sadiq_bot_materials.gazebo" />
+<xacro:include filename="$(find sadiq_bot_description)/urdf/sadiq_bot_physics.gazebo" />
+<xacro:include filename="$(find sadiq_bot_description)/urdf/sadiq_bot_plugins.gazebo" />
+
+<!-- PROPERTY LIST -->
+<!-- Hokuyo Laser scanner -->
+<property name="hokuyo_size" value="0.05" />
+
+<!-- Main Body Cylinder base   -->
+<property name="base_height" value="0.02" /> 
+<property name="base_radius" value="0.15" /> 
+<property name="base_mass" value="5" /> <!-- in kg-->
+<!--inertial-->
+<!--mass value="0.0001"/-->
+<!--origin xyz="0 0 0"/-->
+<!--inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
+</inertial-->
+
+<!--link name="dummy">
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <box size="0.001 0.001 0.001"/>
+    </geometry>
+  </visual>
+</link>
+
+<gazebo reference="dummy">
+  <turnGravityOff>false</turnGravityOff>
+</gazebo-->
+
+<!--joint name="dummy_joint" type="fixed">
+  <parent link="dummy"/>
+  <child link="base_link"/>
+</joint-->
+
+
+
+
+<link name="base_link">
+  <inertial>
+    <origin xyz="-0.005026118534389563 -0.01721865226167774 0.025746091072640934" rpy="0 0 0"/>
+    <mass value="0.14488567069532468"/>
+    <inertia ixx="0.000217" iyy="0.000656" izz="0.000872" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<!--Hokyou Laser PArt-->
+
+
+<!-- Hokuyo Laser -->
+<link name="hokuyo_link">
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+  <box size="0.05 0.05 0.05"/>
+    </geometry>
+  </collision>
+
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/hokuyo.dae"/>
+    </geometry>
+  </visual>
+
+  <inertial>
+    <mass value="1e-5" />
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+  </inertial>
+</link>
+
+<joint name="hokuyo_joint" type="fixed">
+  <axis xyz="0 1 0" />
+  <origin xyz="0.15 0.080 0.039" rpy="0 0 0"/>
+  <parent link="top_1"/>
+  <child link="hokuyo_link"/>
+</joint>
+
+
+
+
+<link name="spacerFR_1">
+  <inertial>
+    <origin xyz="0.09502588146561004 -0.04778165226167742 -0.0037459089273591817" rpy="0 0 0"/>
+    <mass value="0.007352555678129975"/>
+    <inertia ixx="1e-06" iyy="1e-06" izz="0.0" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.010052 0.034437 -0.051492" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/spacerFR_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.010052 0.034437 -0.051492" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/spacerFR_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="spacerFL_1">
+  <inertial>
+    <origin xyz="0.0950258814656102 0.08221834773832215 -0.0037459089273591123" rpy="0 0 0"/>
+    <mass value="0.007352555678129974"/>
+    <inertia ixx="1e-06" iyy="1e-06" izz="0.0" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.010052 0.034437 -0.051492" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/spacerFL_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.010052 0.034437 -0.051492" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/spacerFL_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="spacerBL_1">
+  <inertial>
+    <origin xyz="-0.08497411853438903 0.08221834773832201 -0.003745908927359147" rpy="0 0 0"/>
+    <mass value="0.007352555678129975"/>
+    <inertia ixx="1e-06" iyy="1e-06" izz="0.0" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.010052 0.034437 -0.051492" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/spacerBL_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.010052 0.034437 -0.051492" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/spacerBL_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="spacerBR_1">
+  <inertial>
+    <origin xyz="-0.08497411853438917 -0.04778165226167754 -0.0037459089273592094" rpy="0 0 0"/>
+    <mass value="0.007352555678129975"/>
+    <inertia ixx="1e-06" iyy="1e-06" izz="0.0" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.010052 0.034437 -0.051492" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/spacerBR_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.010052 0.034437 -0.051492" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/spacerBR_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="top_1">
+  <inertial>
+    <origin xyz="0.09502588146561056 0.08221834773832232 -0.021995908927359295" rpy="0 0 0"/>
+    <mass value="0.18810348845221944"/>
+    <inertia ixx="0.000677" iyy="0.000677" izz="0.001354" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.100052 0.099437 -0.091492" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/top_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.100052 0.099437 -0.091492" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/top_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="motorFR_1">
+  <inertial>
+    <origin xyz="0.06831773842621108 -0.03562575348317477 -0.034895911203991395" rpy="0 0 0"/>
+    <mass value="0.11062025194414454"/>
+    <inertia ixx="8e-06" iyy="4.6e-05" izz="4.6e-05" ixy="2e-06" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.010052 0.034437 -0.047492" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/motorFR_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.010052 0.034437 -0.047492" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/motorFR_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="motor_v1_1">
+  <inertial>
+    <origin xyz="0.06831773842621125 0.07017424651682438 -0.03489591120399146" rpy="0 0 0"/>
+    <mass value="0.11062025194414454"/>
+    <inertia ixx="8e-06" iyy="4.6e-05" izz="4.6e-05" ixy="2e-06" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.010052 0.034437 -0.047492" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/motor_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.010052 0.034437 -0.047492" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/motor_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="motorBR_1">
+  <inertial>
+    <origin xyz="-0.0582659754949908 -0.03573755104017939 -0.03489591120399207" rpy="0 0 0"/>
+    <mass value="0.11062025194414454"/>
+    <inertia ixx="8e-06" iyy="4.6e-05" izz="4.6e-05" ixy="2e-06" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.010052 0.034437 -0.047492" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/motorBR_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.010052 0.034437 -0.047492" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/motorBR_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="motorBL_1">
+  <inertial>
+    <origin xyz="-0.05826597549499012 0.07006244895981945 -0.03489591120399149" rpy="0 0 0"/>
+    <mass value="0.11062025194414454"/>
+    <inertia ixx="8e-06" iyy="4.6e-05" izz="4.6e-05" ixy="2e-06" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.010052 0.034437 -0.047492" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/motorBL_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.010052 0.034437 -0.047492" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/motorBL_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="FWR_1">
+  <inertial>
+    <origin xyz="-1.1276749470323644e-07 -0.01812674605645491 7.216094384358829e-08" rpy="0 0 0"/>
+    <mass value="0.1680116657550928"/>
+    <inertia ixx="6.8e-05" iyy="0.000114" izz="6.8e-05" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.035054 0.080619 -0.012596" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/FWR_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.035054 0.080619 -0.012596" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/FWR_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="FWL_1">
+  <inertial>
+    <origin xyz="-1.1276749467548086e-07 0.01812744153309806 1.0998433783854233e-07" rpy="0 0 0"/>
+    <mass value="0.1680116657550928"/>
+    <inertia ixx="6.8e-05" iyy="0.000114" izz="6.8e-05" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.035054 -0.046181 -0.012596" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/FWL_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.035054 -0.046181 -0.012596" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/FWL_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="BWR_1">
+  <inertial>
+    <origin xyz="-1.1276749390526364e-07 -0.01812674605645488 7.216094386267025e-08" rpy="0 0 0"/>
+    <mass value="0.1680116657550928"/>
+    <inertia ixx="6.8e-05" iyy="0.000114" izz="6.8e-05" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.045106 0.080619 -0.012596" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/BWR_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.045106 0.080619 -0.012596" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/BWR_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="BWL_1">
+  <inertial>
+    <origin xyz="-1.12767493946897e-07 0.018127441533098032 1.0998433790099238e-07" rpy="0 0 0"/>
+    <mass value="0.1680116657550928"/>
+    <inertia ixx="6.8e-05" iyy="0.000114" izz="6.8e-05" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.045106 -0.046181 -0.012596" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/BWL_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.045106 -0.046181 -0.012596" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/BWL_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="L298N__1">
+  <inertial>
+    <origin xyz="0.0026188329057179175 -0.00024964355635801946 -0.004255262218323969" rpy="0 0 0"/>
+    <mass value="0.02216639435647811"/>
+    <inertia ixx="2e-06" iyy="2e-06" izz="3e-06" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.005026 0.017219 -0.023746" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/L298N__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.005026 0.017219 -0.023746" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/L298N__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="battery_1">
+  <inertial>
+    <origin xyz="-0.04366569494234184 0.017248371421731985 -0.032245908694498865" rpy="0 0 0"/>
+    <mass value="0.15463634880103655"/>
+    <inertia ixx="1.2e-05" iyy="3e-05" izz="3.5e-05" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.010052 0.034437 -0.047492" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/battery_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.010052 0.034437 -0.047492" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/battery_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="mi_powerbank_2_v1_1">
+  <inertial>
+    <origin xyz="-0.02965900072121467 0.01731484208144186 -0.016697832740958506" rpy="0 0 0"/>
+    <mass value="0.9711932513436171"/>
+    <inertia ixx="0.000392" iyy="0.001367" izz="0.001728" ixy="6e-06" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.010052 0.034437 -0.051492" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/mi_powerbank_2_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.010052 0.034437 -0.051492" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/mi_powerbank_2_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Raspberry_Pi_1">
+  <inertial>
+    <origin xyz="-0.0501180585799936 0.07625567615124004 -0.010367435631088828" rpy="0 0 0"/>
+    <mass value="0.11046204859047104"/>
+    <inertia ixx="3.3e-05" iyy="7.4e-05" izz="0.000102" ixy="2e-06" iyz="-0.0" ixz="7e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.010052 0.034437 -0.088992" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/Raspberry_Pi_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.010052 0.034437 -0.088992" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/Raspberry_Pi_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Arduino_Uno_v1_1">
+  <inertial>
+    <origin xyz="-0.029514641378178302 -0.053764906163982946 -0.012208697644848054" rpy="0 0 0"/>
+    <mass value="0.09575566619921361"/>
+    <inertia ixx="2.6e-05" iyy="4.3e-05" izz="6.7e-05" ixy="3e-06" iyz="0.0" ixz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.010052 0.034437 -0.088992" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/Arduino_Uno_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.010052 0.034437 -0.088992" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/Arduino_Uno_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="cam_holder_1">
+  <inertial>
+    <origin xyz="0.07577093135878428 1.4122304249353235e-06 0.009991120977664268" rpy="0 0 0"/>
+    <mass value="0.009781937489392125"/>
+    <inertia ixx="1e-06" iyy="7e-06" izz="6e-06" ixy="-0.0" iyz="-0.0" ixz="-1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.005026 0.017219 -0.027746" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/cam_holder_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.005026 0.017219 -0.027746" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/cam_holder_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="pi_cam_1">
+  <inertial>
+    <origin xyz="0.0009444618619615375 -0.00038888161594860873 -0.001023932548815193" rpy="0 0 0"/>
+    <mass value="0.006742869651497777"/>
+    <inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.116096 0.017219 -0.057771" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/pi_cam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.116096 0.017219 -0.057771" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://sadiq_bot_description/meshes/pi_cam_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="spacerFRJ" type="fixed">
+  <origin xyz="-0.010052 -0.034437 0.051492" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="spacerFR_1"/>
+</joint>
+
+<joint name="spacerFLJ" type="fixed">
+  <origin xyz="-0.010052 -0.034437 0.051492" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="spacerFL_1"/>
+</joint>
+
+<joint name="spacerBLJ" type="fixed">
+  <origin xyz="-0.010052 -0.034437 0.051492" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="spacerBL_1"/>
+</joint>
+
+<joint name="spacerBRJ" type="fixed">
+  <origin xyz="-0.010052 -0.034437 0.051492" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="spacerBR_1"/>
+</joint>
+
+<joint name="top_J" type="fixed">
+  <origin xyz="-0.09 -0.065 0.04" rpy="0 0 0"/>
+  <parent link="spacerBR_1"/>
+  <child link="top_1"/>
+</joint>
+
+<joint name="motorFR_J" type="fixed">
+  <origin xyz="-0.010052 -0.034437 0.047492" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="motorFR_1"/>
+</joint>
+
+<joint name="motorFL_J" type="fixed">
+  <origin xyz="-0.010052 -0.034437 0.047492" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="motor_v1_1"/>
+</joint>
+
+<joint name="motorBR_J" type="fixed">
+  <origin xyz="-0.010052 -0.034437 0.047492" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="motorBR_1"/>
+</joint>
+
+<joint name="motorBL_J" type="fixed">
+  <origin xyz="-0.010052 -0.034437 0.047492" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="motorBL_1"/>
+</joint>
+
+<joint name="FWR_J" type="continuous">
+  <origin xyz="0.045106 -0.046182 -0.034896" rpy="0 0 0"/>
+  <parent link="motorFR_1"/>
+  <child link="FWR_1"/>
+  <axis xyz="-0.0 -1.0 -0.0"/>
+</joint>
+
+<joint name="FWL_J" type="continuous">
+  <origin xyz="0.045106 0.080618 -0.034896" rpy="0 0 0"/>
+  <parent link="motor_v1_1"/>
+  <child link="FWL_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="BWR_J" type="continuous">
+  <origin xyz="-0.035054 -0.046182 -0.034896" rpy="0 0 0"/>
+  <parent link="motorBR_1"/>
+  <child link="BWR_1"/>
+  <axis xyz="-0.0 -1.0 0.0"/>
+</joint>
+
+<joint name="BWL_J" type="continuous">
+  <origin xyz="-0.035054 0.080618 -0.034896" rpy="0 0 0"/>
+  <parent link="motorBL_1"/>
+  <child link="BWL_1"/>
+  <axis xyz="-0.0 1.0 0.0"/>
+</joint>
+
+<joint name="l289N_J" type="fixed">
+  <origin xyz="-0.005026 -0.017219 0.023746" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="L298N__1"/>
+</joint>
+
+<joint name="battery_J" type="fixed">
+  <origin xyz="-0.010052 -0.034437 0.047492" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="battery_1"/>
+</joint>
+
+<joint name="Powerbn_J" type="fixed">
+  <origin xyz="-0.010052 -0.034437 0.051492" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="mi_powerbank_2_v1_1"/>
+</joint>
+
+
+
+<joint name="raspberry_pi_J" type="fixed">
+  <origin xyz="0.09 0.065 -0.0025" rpy="0 0 0"/>
+  <parent link="top_1"/>
+  <child link="Raspberry_Pi_1"/>
+</joint>
+
+<joint name="arduino_J" type="fixed">
+  <origin xyz="0.09 0.065 -0.0025" rpy="0 0 0"/>
+  <parent link="top_1"/>
+  <child link="Arduino_Uno_v1_1"/>
+</joint>
+
+<joint name="cam_holder_J" type="fixed">
+  <origin xyz="-0.005026 -0.017219 0.027746" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="cam_holder_1"/>
+</joint>
+
+<joint name="picam_J" type="fixed">
+  <origin xyz="0.121122 0.0 0.030025" rpy="0 0 0"/>
+  <parent link="cam_holder_1"/>
+  <child link="pi_cam_1"/>
+</joint>
+
+</robot>

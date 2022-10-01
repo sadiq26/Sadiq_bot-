@@ -1,0 +1,148 @@
+<?xml version="1.0" ?>
+<robot name="sadiq_bot" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<xacro:property name="body_color" value="Gazebo/Silver" />
+<xacro:property name="standard_friction" value="1" />
+<xacro:property name="wheel_friction" value="1" />
+
+<gazebo reference="base_link">
+  <mu1>${standard_friction}</mu1>
+  <mu2>${standard_friction}</mu2>
+  <selfCollide>true</selfCollide>
+  <gravity>true</gravity>
+</gazebo>
+
+<gazebo reference="hokuyo_link">
+  <mu1>${standard_friction}</mu1>
+  <mu2>${standard_friction}</mu2>
+  <selfCollide>true</selfCollide>
+  <gravity>true</gravity>
+</gazebo>
+
+<gazebo reference="spacerFR_1">
+  <mu1>${standard_friction}</mu1>
+  <mu2>${standard_friction}</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="spacerFL_1">
+  <mu1>${standard_friction}</mu1>
+  <mu2>${standard_friction}</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="spacerBL_1">
+  <mu1>${standard_friction}</mu1>
+  <mu2>${standard_friction}</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="spacerBR_1">
+  <mu1>${standard_friction}</mu1>
+  <mu2>${standard_friction}</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="top_1">
+  <mu1>${standard_friction}</mu1>
+  <mu2>${standard_friction}</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="motorFR_1">
+  <mu1>${standard_friction}</mu1>
+  <mu2>${standard_friction}</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="motor_v1_1">
+  <mu1>${standard_friction}</mu1>
+  <mu2>${standard_friction}</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="motorBR_1">
+  <mu1>${standard_friction}</mu1>
+  <mu2>${standard_friction}</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="motorBL_1">
+  <mu1>${standard_friction}</mu1>
+  <mu2>${standard_friction}</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="FWR_1">
+  <mu1>${wheel_friction}</mu1>
+  <mu2>${wheel_friction}</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="FWL_1">
+  <mu1>${wheel_friction}</mu1>
+  <mu2>${wheel_friction}</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="BWR_1">
+  <mu1>${wheel_friction}</mu1>
+  <mu2>${wheel_friction}</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="BWL_1">
+  <mu1>${wheel_friction}</mu1>
+  <mu2>${wheel_friction}</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="L298N__1">
+  <mu1>${standard_friction}</mu1>
+  <mu2>${standard_friction}</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="battery_1">
+  <mu1>${standard_friction}</mu1>
+  <mu2>${standard_friction}</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="mi_powerbank_2_v1_1">
+  <mu1>${standard_friction}</mu1>
+  <mu2>${standard_friction}</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="Lidar_1">
+  <mu1>${standard_friction}</mu1>
+  <mu2>${standard_friction}</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="Raspberry_Pi_1">
+  <mu1>${standard_friction}</mu1>
+  <mu2>${standard_friction}</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="Arduino_Uno_v1_1">
+  <mu1>${standard_friction}</mu1>
+  <mu2>${standard_friction}</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="cam_holder_1">
+  <mu1>${standard_friction}</mu1>
+  <mu2>${standard_friction}</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="pi_cam_1">
+  <mu1>${standard_friction}</mu1>
+  <mu2>${standard_friction}</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+</robot>
